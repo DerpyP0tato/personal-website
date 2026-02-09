@@ -15,6 +15,22 @@ export default function CustomCursor() {
     const [isHovering, setIsHovering] = useState(false);
     const [isVisible, setIsVisible] = useState(false);
 
+    const [isTouch, setIsTouch] = useState(false);
+
+    useEffect(() => {
+        // Check if device is touch-primary (coarse pointer)
+        const checkTouch = () => {
+            if (typeof window !== 'undefined') {
+                const isTouchDevice = window.matchMedia("(pointer: coarse)").matches;
+                setIsTouch(isTouchDevice);
+            }
+        };
+
+        checkTouch();
+        window.addEventListener('resize', checkTouch);
+        return () => window.removeEventListener('resize', checkTouch);
+    }, []);
+
     useEffect(() => {
         const moveCursor = (e: MouseEvent) => {
             cursorX.set(e.clientX - 12); // Center the 24px cursor
@@ -29,9 +45,11 @@ export default function CustomCursor() {
         const handleLinkHoverStart = () => setIsHovering(true);
         const handleLinkHoverEnd = () => setIsHovering(false);
 
-        window.addEventListener("mousemove", moveCursor);
-        window.addEventListener("mousedown", handleMouseDown);
-        window.addEventListener("mouseup", handleMouseUp);
+        if (!isTouch) {
+            window.addEventListener("mousemove", moveCursor);
+            window.addEventListener("mousedown", handleMouseDown);
+            window.addEventListener("mouseup", handleMouseUp);
+        }
 
         // Attach listeners to all interactive elements
         const clickableElements = document.querySelectorAll("a, button, input, textarea, [role='button']");
@@ -63,10 +81,12 @@ export default function CustomCursor() {
                 el.removeEventListener("mouseleave", handleLinkHoverEnd);
             });
         };
-    }, [cursorX, cursorY, isVisible]);
+    }, [cursorX, cursorY, isVisible, isTouch]);
 
     // Hide default cursor
     useEffect(() => {
+        if (isTouch) return;
+
         document.body.style.cursor = 'none';
         const style = document.createElement('style');
         style.innerHTML = `
@@ -76,11 +96,13 @@ export default function CustomCursor() {
 
         return () => {
             document.body.style.cursor = 'auto';
-            document.head.removeChild(style);
+            if (document.head.contains(style)) {
+                document.head.removeChild(style);
+            }
         };
-    }, []);
+    }, [isTouch]);
 
-    if (!isVisible) return null;
+    if (!isVisible || isTouch) return null;
 
     return (
         <motion.div

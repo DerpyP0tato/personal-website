@@ -2,13 +2,13 @@
 
 import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import { Home, User, Briefcase } from "lucide-react";
+import { Home, User, Briefcase, Folder } from "lucide-react";
 
 const navItems = [
     { name: "HOME", href: "#home", icon: <Home className="w-4 h-4" /> },
     { name: "ABOUT", href: "#about", icon: <User className="w-4 h-4" /> },
     { name: "EXPERIENCE", href: "#experience", icon: <Briefcase className="w-4 h-4" /> },
-    { name: "PROJECTS", href: "#projects", icon: <Briefcase className="w-4 h-4" /> }, // Keeping Briefcase icon for now or can import Folder
+    { name: "PROJECTS", href: "#projects", icon: <Folder className="w-4 h-4" /> },
 ];
 
 export default function Navbar() {

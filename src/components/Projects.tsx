@@ -111,7 +111,8 @@ export default function Projects() {
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
                             transition={{ duration: 0.5, delay: index * 0.1 }}
-                            className={`group relative p-6 md:p-8 rounded-2xl border ${project.color} backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl`}
+                            whileHover={{ y: -5, transition: { duration: 0.2 } }}
+                            className={`group relative p-6 md:p-8 rounded-2xl border ${project.color} backdrop-blur-sm transition-colors duration-300 hover:shadow-2xl`}
                         >
                             {/* Header Row: Icon and Category */}
                             <div className="flex justify-between items-start mb-6">

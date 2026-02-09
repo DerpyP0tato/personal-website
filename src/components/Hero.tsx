@@ -7,7 +7,7 @@ import { motion } from "framer-motion";
 export default function Hero() {
     return (
 
-        <section id="home" className="relative z-10 h-[100dvh] max-h-[100dvh] w-full flex flex-col items-center justify-center overflow-hidden bg-[#050505] text-white pt-8 md:pt-12 pb-20">
+        <section id="home" className="relative z-10 h-[100svh] max-h-[100svh] w-full flex flex-col items-center justify-center overflow-hidden bg-[#050505] text-white pt-8 md:pt-12 pb-20">
 
             {/* Background Effects */}
             <div className="absolute inset-0 z-0 pointer-events-none">
