@@ -51,7 +51,7 @@ export default function Navbar() {
                         <a
                             key={item.name}
                             href={item.href}
-                            className={`flex items-center gap-2 px-6 py-2.5 rounded-full text-xs md:text-sm transition-all duration-300 ${isActive ? "bg-white text-black font-medium" : "text-white/60 hover:text-white hover:bg-white/10"}`}
+                            className={`flex items-center gap-2 px-6 py-2.5 rounded-full text-xs md:text-sm transition-all duration-300 font-display tracking-widest ${isActive ? "bg-white text-black font-bold" : "text-white/60 hover:text-white hover:bg-white/10"}`}
                             onClick={() => setActiveSection(item.href.substring(1))}
                         >
                             <span className="hidden md:inline">{item.name}</span>

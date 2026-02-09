@@ -86,7 +86,7 @@ const projects = [
 
 export default function Projects() {
     return (
-        <section className="relative w-full py-20 bg-[#0a0a0a] text-white overflow-hidden" id="projects">
+        <section className="relative w-full min-h-screen flex flex-col justify-center py-20 bg-[#0a0a0a] text-white overflow-hidden" id="projects">
 
             <div className="container mx-auto px-6 md:px-12 relative z-10">
 
@@ -98,7 +98,7 @@ export default function Projects() {
                     transition={{ duration: 0.6 }}
                     className="mb-16 md:mb-24"
                 >
-                    <h2 className="text-4xl md:text-5xl font-bold font-display mb-6">Selected Projects</h2>
+                    <h2 className="text-4xl md:text-5xl font-bold font-display mb-6 tracking-wider uppercase">Selected Projects</h2>
                     <div className="w-20 h-1 bg-blue-500 rounded-full" />
                 </motion.div>
 
@@ -124,7 +124,7 @@ export default function Projects() {
                             </div>
 
                             {/* Title & Description */}
-                            <h3 className="text-xl font-bold mb-3 group-hover:text-blue-400 transition-colors">
+                            <h3 className="text-xl font-bold font-display mb-3 group-hover:text-blue-400 transition-colors uppercase tracking-wide">
                                 {project.title}
                             </h3>
                             <p className="text-slate-400 text-sm leading-relaxed mb-8">

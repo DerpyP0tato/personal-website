@@ -6,7 +6,7 @@ import { ArrowRight } from "lucide-react";
 export default function Footer() {
     return (
         <footer className="w-full py-12 bg-[#050505] border-t border-white/5 flex flex-col items-center justify-center text-center">
-            <h3 className="text-xl md:text-2xl font-bold font-display text-white mb-4">
+            <h3 className="text-xl md:text-2xl font-bold font-display tracking-wide text-white mb-4 uppercase">
                 Need strategy & technical consulting?
             </h3>
             <a

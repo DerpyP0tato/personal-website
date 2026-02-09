@@ -16,13 +16,13 @@ const techStack = [
 
 export default function About() {
     return (
-        <section className="relative w-full py-20 bg-[#0a0a0a] text-white overflow-hidden" id="about">
+        <section className="relative w-full min-h-screen flex flex-col items-center justify-center py-20 bg-slate-950 text-white overflow-hidden" id="about">
 
             {/* Background noise/grain */}
             <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-10 mix-blend-soft-light pointer-events-none" />
 
             <div className="container mx-auto px-6 md:px-12 relative z-10">
-                <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
+                <div className="flex flex-col lg:flex-row items-center justify-center gap-12 lg:gap-20">
 
                     {/* Left Side: Image */}
                     <motion.div
@@ -56,7 +56,7 @@ export default function About() {
                         transition={{ duration: 0.8, delay: 0.2 }}
                         className="w-full lg:w-1/2 text-left"
                     >
-                        <div className="mb-2 text-blue-400 font-medium tracking-widest text-sm uppercase">Hello, I am</div>
+                        <div className="mb-2 text-blue-400 font-display tracking-widest text-sm uppercase">Hello, I am</div>
                         <h2 className="text-4xl md:text-6xl font-bold font-display text-white mb-8 leading-tight">
                             Maxwell Chan
                         </h2>
@@ -65,7 +65,7 @@ export default function About() {
 
                             {/* About Me */}
                             <div>
-                                <h3 className="text-xl font-bold text-slate-200 mb-3">About Me</h3>
+                                <h3 className="text-xl font-bold font-display tracking-wide text-slate-200 mb-3 uppercase">About Me</h3>
                                 <p className="text-slate-400 leading-relaxed text-sm md:text-base">
                                     I enjoy building things that turn ideas into something useful. Much of my work lives at the intersection of technology, analytics, and strategy, where I’ve explored everything from data-driven tools and automation systems to mentorship and community platforms. I’m motivated by curiosity and a love for structured problem-solving, thinking through messy problems, breaking them down, and turning them into practical solutions. Whether I’m working on a product, a system, or a new idea, I’m most interested in building things that are thoughtful, scalable, and genuinely helpful.
                                 </p>
@@ -73,14 +73,14 @@ export default function About() {
 
                             {/* Education */}
                             <div>
-                                <h3 className="text-xl font-bold text-slate-200 mb-3">Education</h3>
+                                <h3 className="text-xl font-bold font-display tracking-wide text-slate-200 mb-3 uppercase">Education</h3>
                                 <div className="text-slate-300 font-medium">Binghamton University</div>
                                 <div className="text-slate-500 text-sm">B.S. Business Administration & Computer Science</div>
                             </div>
 
                             {/* Skills */}
                             <div>
-                                <h3 className="text-xl font-bold text-slate-200 mb-3">Skills</h3>
+                                <h3 className="text-xl font-bold font-display tracking-wide text-slate-200 mb-3 uppercase">Skills</h3>
                                 <div className="flex flex-wrap gap-3">
                                     {techStack.map((tech) => (
                                         <div

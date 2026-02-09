@@ -27,7 +27,7 @@ const experiences = [
 
 export default function Experience() {
     return (
-        <section className="relative w-full py-20 bg-[#0a0a0a] text-white overflow-hidden" id="experience">
+        <section className="relative w-full min-h-screen flex flex-col justify-center py-20 bg-[#0a0a0a] text-white overflow-hidden" id="experience">
 
             <div className="container mx-auto px-6 md:px-12 relative z-10">
 
@@ -38,11 +38,11 @@ export default function Experience() {
                     transition={{ duration: 0.8 }}
                     className="max-w-4xl mx-auto text-center mb-16"
                 >
-                    <h2 className="text-3xl md:text-5xl font-bold font-display tracking-wider mb-6 text-transparent bg-clip-text bg-gradient-to-r from-white via-slate-200 to-slate-400">
+                    <h2 className="text-3xl md:text-5xl font-bold font-display tracking-widest mb-6 text-transparent bg-clip-text bg-gradient-to-r from-white via-slate-200 to-slate-400 uppercase">
                         EXPERIENCE
                     </h2>
                     <p className="text-lg text-slate-400 leading-relaxed max-w-2xl mx-auto">
-                        A timeline of my professional journey and the value I've delivered to teams and projects.
+                        A timeline of my professional journey and the value I&apos;ve delivered to teams and projects.
                     </p>
                 </motion.div>
 

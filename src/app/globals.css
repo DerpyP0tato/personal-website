@@ -3,6 +3,12 @@
 @theme {
     --font-sans: var(--font-outfit), ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
     --font-display: var(--font-orbitron), ui-sans-serif, system-ui, sans-serif;
+    --font-display: var(--font-orbitron), ui-sans-serif, system-ui, sans-serif;
+}
+
+/* Explicit fallback to ensure font-display works */
+.font-display {
+    font-family: var(--font-orbitron), ui-sans-serif, system-ui, sans-serif;
 }
 
 :root {
@@ -41,4 +47,19 @@ body {
 .mask-image-gradient {
     mask-image: linear-gradient(to bottom, black 40%, transparent 100%);
     -webkit-mask-image: linear-gradient(to bottom, black 40%, transparent 100%);
+}
+
+.no-scrollbar::-webkit-scrollbar {
+    display: none;
+}
+
+.no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+::selection {
+    background-color: rgba(124, 58, 237, 0.3);
+    /* Violet-600 with 30% opacity */
+    color: white;
 }
