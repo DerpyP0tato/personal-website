@@ -16,7 +16,7 @@ const orbitron = Orbitron({
 });
 
 export const metadata: Metadata = {
-  title: "Maxwell Chan | Creative Developer",
+  title: "Maxwell Chan",
   description: "Personal portfolio of Maxwell Chan, a developer building the future of web experiences.",
 };
 

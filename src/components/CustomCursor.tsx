@@ -22,13 +22,26 @@ export default function CustomCursor() {
         const checkTouch = () => {
             if (typeof window !== 'undefined') {
                 const isTouchDevice = window.matchMedia("(pointer: coarse)").matches;
-                setIsTouch(isTouchDevice);
+                if (isTouchDevice) {
+                    setIsTouch(true);
+                }
             }
         };
 
         checkTouch();
         window.addEventListener('resize', checkTouch);
-        return () => window.removeEventListener('resize', checkTouch);
+
+        // Also listen for any touch event to disable it immediately on hybrid devices
+        const handleTouch = () => {
+            setIsTouch(true);
+            window.removeEventListener('touchstart', handleTouch);
+        };
+        window.addEventListener('touchstart', handleTouch);
+
+        return () => {
+            window.removeEventListener('resize', checkTouch);
+            window.removeEventListener('touchstart', handleTouch);
+        };
     }, []);
 
     useEffect(() => {

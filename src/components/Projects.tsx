@@ -7,6 +7,7 @@ import { BarChart3, Activity, GitBranch, ShieldCheck, Mail, DollarSign, Layout }
 const projects = [
     {
         title: "Marketing Analytics Library",
+        subtitle: "Data-Driven Strategy & Decision Making",
         category: "ANALYTICS",
         description: "Developed a Python-based analytics library to extract and analyze website visitor behavior beyond standard GA4 reporting, with metrics tailored to company-specific decision-making needs.",
         metrics: [
@@ -18,6 +19,7 @@ const projects = [
     },
     {
         title: "Website Monitor Tool",
+        subtitle: "Enterprise Risk Management & Cost Optimization",
         category: "INTERNAL TOOLING",
         description: "Built a custom uptime and audit monitoring system covering performance, accessibility, and SEO. The tool replicated core enterprise features and enabled the decommissioning of a six-figure annual software platform.",
         metrics: [
@@ -29,6 +31,7 @@ const projects = [
     },
     {
         title: "Data Pipeline Automation",
+        subtitle: "Process Optimization & Workflow Automation",
         category: "AUTOMATION",
         description: "Created an automated, Selenium-based data pipeline that connected Amazon marketplace data directly into the company's analytics platform, eliminating manual extraction and reporting workflows.",
         metrics: [
@@ -40,6 +43,7 @@ const projects = [
     },
     {
         title: "Data Scrubbing & Compliance",
+        subtitle: "Regulatory Compliance & Data Quality",
         category: "AUTOMATION",
         description: "Built a Python-based system to automatically scrub, standardize, and validate customer lead data in line with business requirements and compliance standards, replacing a team-wide manual process.",
         metrics: [
@@ -51,6 +55,7 @@ const projects = [
     },
     {
         title: "Email Marketing Tooling",
+        subtitle: "Marketing Operations & Resource Allocation",
         category: "INTERNAL TOOLING",
         description: "Developed a lightweight internal email system that enabled fully branded marketing campaigns without reliance on recurring third-party email marketing platforms.",
         metrics: [
@@ -62,6 +67,7 @@ const projects = [
     },
     {
         title: "Revenue Reconciliation",
+        subtitle: "Financial Assurance & Revenue Recovery",
         category: "INTERNAL TOOLING",
         description: "Created an internal application that reconciled booking and promotion data across platforms to identify discrepancies and surface previously missed revenue.",
         metrics: [
@@ -73,6 +79,7 @@ const projects = [
     },
     {
         title: "Website Design & Prototyping",
+        subtitle: "Product Strategy & UX Design",
         category: "DESIGN",
         description: "Designed and prototyped marketing websites in Figma and supported deployment and ongoing management on Squarespace for non-technical teams.",
         metrics: [
@@ -125,9 +132,12 @@ export default function Projects() {
                             </div>
 
                             {/* Title & Description */}
-                            <h3 className="text-xl font-bold font-display mb-3 group-hover:text-blue-400 transition-colors uppercase tracking-wide">
+                            <h3 className="text-xl font-bold font-display mb-1 group-hover:text-blue-400 transition-colors uppercase tracking-wide">
                                 {project.title}
                             </h3>
+                            <div className="text-xs font-semibold text-blue-400/80 mb-3 tracking-wider uppercase">
+                                {project.subtitle}
+                            </div>
                             <p className="text-slate-400 text-sm leading-relaxed mb-8">
                                 {project.description}
                             </p>
