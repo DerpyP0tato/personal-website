@@ -38,7 +38,7 @@ export default function About() {
                         <div className="relative z-10 w-[300px] h-[400px] md:w-[450px] md:h-[550px] overflow-hidden rounded-2xl border border-white/10 bg-white/5 backdrop-blur-sm shadow-2xl">
                             {/* Using the hero image but cropped/positioned differently for now */}
                             <Image
-                                src="/about-image.jpg"
+                                src="/about-image.JPG"
                                 alt="Maxwell Chan"
                                 fill
                                 className="object-cover object-top scale-110 hover:scale-115 transition-transform duration-700"
