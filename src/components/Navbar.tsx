@@ -16,8 +16,9 @@ export default function Navbar() {
 
     useEffect(() => {
         const handleScroll = () => {
-            const sections = navItems.map(item => item.href.substring(1));
-            const scrollPosition = window.scrollY + 100; // Offset for better detection
+            // Include 'competitions' in the sections to check, but map it to 'experience'
+            const sections = [...navItems.map(item => item.href.substring(1)), "competitions"];
+            const scrollPosition = window.scrollY + (window.innerHeight / 3); // Check if section is in top third of screen
 
             for (const section of sections) {
                 const element = document.getElementById(section);
@@ -26,7 +27,12 @@ export default function Navbar() {
                     const offsetHeight = element.offsetHeight;
 
                     if (scrollPosition >= offsetTop && scrollPosition < offsetTop + offsetHeight) {
-                        setActiveSection(section);
+                        // Map 'competitions' back to 'experience'
+                        if (section === "competitions") {
+                            setActiveSection("experience");
+                        } else {
+                            setActiveSection(section);
+                        }
                         break;
                     }
                 }
