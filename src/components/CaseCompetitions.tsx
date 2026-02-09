@@ -67,7 +67,17 @@ const competitions = [
     }
 ];
 
-const CompetitionItem = ({ comp, isSelected, onClick }) => {
+interface Competition {
+    id: string;
+    name: string;
+    placement: string;
+    year: string;
+    description: string;
+    icon: React.ReactNode;
+    color: string;
+}
+
+const CompetitionItem = ({ comp, isSelected, onClick }: { comp: Competition; isSelected: boolean; onClick: () => void }) => {
     const isWinner = comp.placement.includes("Winner");
 
     return (

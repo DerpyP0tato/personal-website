@@ -16,10 +16,13 @@ const techStack = [
 
 export default function About() {
     return (
-        <section className="relative w-full min-h-screen flex flex-col items-center justify-center py-20 bg-slate-950 text-white overflow-hidden" id="about">
+        <section className="relative w-full min-h-screen flex flex-col items-center justify-center py-20 bg-[#050505] text-white overflow-hidden" id="about">
 
             {/* Background noise/grain */}
             <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-10 mix-blend-soft-light pointer-events-none" />
+
+            {/* Top glow to blend with Hero section - refined for smoother entry */}
+            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[300px] bg-white/[0.02] blur-[100px] rounded-full pointer-events-none" />
 
             <div className="container mx-auto px-6 md:px-12 relative z-10">
                 <div className="flex flex-col lg:flex-row items-center justify-center gap-12 lg:gap-20">
@@ -44,7 +47,7 @@ export default function About() {
                                 className="object-cover object-top scale-110 hover:scale-115 transition-transform duration-700"
                             />
                             {/* Overlay Gradient */}
-                            <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-transparent to-transparent opacity-60" />
+                            <div className="absolute inset-0 bg-gradient-to-t from-[#050505] via-transparent to-transparent opacity-60" />
                         </div>
                     </motion.div>
 

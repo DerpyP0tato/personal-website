@@ -7,18 +7,17 @@ import { motion } from "framer-motion";
 export default function Hero() {
     return (
 
-        <section id="home" className="relative z-10 h-[100dvh] max-h-[100dvh] w-full flex flex-col items-center justify-center overflow-hidden bg-[#0a0a0a] text-white pt-8 md:pt-12 pb-20">
+        <section id="home" className="relative z-10 h-[100dvh] max-h-[100dvh] w-full flex flex-col items-center justify-center overflow-hidden bg-[#050505] text-white pt-8 md:pt-12 pb-20">
 
             {/* Background Effects */}
             <div className="absolute inset-0 z-0 pointer-events-none">
-                <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[500px] bg-white/5 opacity-20 blur-[120px] rounded-full" />
-                <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent opacity-20" />
-                <div className="absolute bottom-0 inset-x-0 h-[500px] bg-gradient-to-t from-[#0a0a0a] via-[#0a0a0a] to-transparent" />
-                {/* Solid background safety layer - extends beyond viewport to prevent bleed */}
-                <div className="absolute bottom-0 inset-x-0 h-48 bg-[#0a0a0a]" />
+                {/* Simple top glow with blur - covers most of section */}
+                <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-[85%] bg-white/[0.01] blur-[150px]" />
+                {/* Bottom gradient - matched to unified background for seamless transition */}
+                <div className="absolute bottom-0 inset-x-0 h-[550px]" style={{ background: 'linear-gradient(to top, #050505 0%, rgba(5,5,5,0.8) 15%, rgba(5,5,5,0.6) 30%, rgba(5,5,5,0.4) 45%, rgba(5,5,5,0.2) 60%, rgba(5,5,5,0.1) 75%, rgba(5,5,5,0.05) 90%, transparent 100%)' }} />
 
-                {/* Stars/Dust (Simulated) */}
-                <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 mix-blend-soft-light" />
+                {/* Subtle noise overlay to reduce color banding */}
+                <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-[0.15] mix-blend-soft-light" />
             </div>
 
             {/* Top Bar */}
@@ -86,7 +85,7 @@ export default function Hero() {
                             initial={{ opacity: 0 }}
                             animate={{ opacity: 1 }}
                             transition={{ duration: 0.8, delay: 0.4 }}
-                            className="mt-6 md:mt-8 text-base md:text-xl text-white/50 font-light max-w-xl mx-auto leading-relaxed font-sans"
+                            className="mt-4 md:mt-6 text-base md:text-xl text-white/50 font-light max-w-xl mx-auto leading-relaxed font-sans"
                         >
                             Strategy-driven, technically grounded
                         </motion.p>
