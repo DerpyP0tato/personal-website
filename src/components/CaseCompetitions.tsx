@@ -127,6 +127,7 @@ export default function CaseCompetitions() {
     const containerRef = useRef(null);
     const [activeIndex, setActiveIndex] = useState(0);
     const itemRefs = useRef<(HTMLDivElement | null)[]>([]);
+    const [isMounted, setIsMounted] = useState(false);
 
     // Track scroll progress of the entire section
     const { scrollYProgress } = useScroll({
@@ -162,20 +163,26 @@ export default function CaseCompetitions() {
             const index = Math.round(normalized);
             const clampedIndex = Math.max(0, Math.min(index, count - 1));
             setActiveIndex(clampedIndex);
+
+            // Mark as mounted after first scroll interaction
+            if (!isMounted) {
+                setIsMounted(true);
+            }
         });
         return () => unsubscribe();
-    }, [scrollYProgress]);
+    }, [scrollYProgress, isMounted]);
 
     // Auto-scroll the active item into view
     useEffect(() => {
-        if (itemRefs.current[activeIndex]) {
+        // Only auto-scroll if component has been interacted with (prevent initial load scroll)
+        if (isMounted && itemRefs.current[activeIndex]) {
             itemRefs.current[activeIndex]?.scrollIntoView({
                 behavior: 'smooth',
                 block: 'nearest',
                 inline: 'nearest'
             });
         }
-    }, [activeIndex]);
+    }, [activeIndex, isMounted]);
 
     return (
         <section ref={containerRef} className="relative w-full min-h-screen xl:h-[300vh] bg-[#050505] text-white" id="competitions">
