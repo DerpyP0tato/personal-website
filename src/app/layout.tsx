@@ -18,7 +18,7 @@ const orbitron = Orbitron({
 export const metadata: Metadata = {
   metadataBase: new URL("https://maxwellchan.me"),
   title: "Maxwell Chan",
-  description: "Personal portfolio of Maxwell Chan, a Product Manager & Strategist building the future of web experiences.",
+  description: "Personal portfolio of Maxwell Chan, a business-minded technologist building data-driven products, platforms, and systems.",
   keywords: ["Maxwell Chan", "Product Manager", "Strategy", "Consultant", "Developer", "Product Strategy", "UX Design"],
   authors: [{ name: "Maxwell Chan" }],
   creator: "Maxwell Chan",
@@ -27,7 +27,7 @@ export const metadata: Metadata = {
     locale: "en_US",
     url: "https://maxwellchan.me",
     title: "Maxwell Chan | Product & Strategy",
-    description: "Personal portfolio of Maxwell Chan, a Product Manager & Strategist building the future of web experiences.",
+    description: "Personal portfolio of Maxwell Chan, a business-minded technologist building data-driven products, platforms, and systems.",
     siteName: "Maxwell Chan",
     images: [
       {
@@ -41,7 +41,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Maxwell Chan | Product & Strategy",
-    description: "Personal portfolio of Maxwell Chan, a Product Manager & Strategist building the future of web experiences.",
+    description: "Personal portfolio of Maxwell Chan, a business-minded technologist building data-driven products, platforms, and systems.",
     images: ["/og-image.jpg"],
   },
   robots: {
@@ -69,7 +69,7 @@ export default function RootLayout({
     "@type": "Person",
     name: "Maxwell Chan",
     url: "https://maxwellchan.me",
-    jobTitle: "Product Manager & Strategist",
+    jobTitle: "Business-Minded Technologist",
     sameAs: [
       "https://www.linkedin.com/in/maxwellchan", // Replace with actual
       "https://github.com/maxwellchan" // Replace with actual
