@@ -77,59 +77,61 @@ interface Competition {
     color: string;
 }
 
-const CompetitionItem = ({ comp, isSelected, onClick }: { comp: Competition; isSelected: boolean; onClick: () => void }) => {
+const CompetitionItem = ({ comp, isSelected, onClick, innerRef }: { comp: Competition; isSelected: boolean; onClick: () => void; innerRef?: (el: HTMLDivElement | null) => void }) => {
     const isWinner = comp.placement.includes("Winner");
 
     return (
-
-        <motion.div
-            onClick={onClick}
-            className={`group relative px-4 py-3 cursor-pointer rounded-xl transition-all duration-300 border-l-2 ${isSelected
-                ? "bg-white/5 border-l-blue-500"
-                : "bg-transparent border-l-transparent hover:bg-white/5 hover:border-l-white/20"
-                }`}
-        >
-            <div className="flex flex-col gap-4">
-                <div className="flex items-center justify-between">
-                    <div>
-                        <h3 className={`font-sans font-semibold text-xl xl:text-lg mb-1 transition-colors ${isSelected ? 'text-white' : 'text-slate-400 group-hover:text-slate-200'}`}>
-                            {comp.name}
-                        </h3>
-                        <div className="flex items-center gap-3">
-                            <span className="text-sm text-slate-500">
-                                {comp.year}
-                            </span>
-                            {isWinner ? (
-                                <span className="flex items-center gap-1 text-amber-400 text-xs font-medium">
-                                    <Trophy className="w-3 h-3" />
-                                    {comp.placement}
+        <div ref={innerRef}>
+            <motion.div
+                onClick={onClick}
+                className={`group relative px-4 py-3 cursor-pointer rounded-xl transition-all duration-300 border-l-2 ${isSelected
+                    ? "bg-white/5 border-l-blue-500"
+                    : "bg-transparent border-l-transparent hover:bg-white/5 hover:border-l-white/20"
+                    }`}
+            >
+                <div className="flex flex-col gap-4">
+                    <div className="flex items-center justify-between">
+                        <div>
+                            <h3 className={`font-sans font-semibold text-xl xl:text-lg mb-1 transition-colors ${isSelected ? 'text-white' : 'text-slate-400 group-hover:text-slate-200'}`}>
+                                {comp.name}
+                            </h3>
+                            <div className="flex items-center gap-3">
+                                <span className="text-sm text-slate-500">
+                                    {comp.year}
                                 </span>
-                            ) : comp.placement && (
-                                <span className="flex items-center gap-1 text-slate-400 text-xs font-medium">
-                                    {comp.placement}
-                                </span>
-                            )}
+                                {isWinner ? (
+                                    <span className="flex items-center gap-1 text-amber-400 text-xs font-medium">
+                                        <Trophy className="w-3 h-3" />
+                                        {comp.placement}
+                                    </span>
+                                ) : comp.placement && (
+                                    <span className="flex items-center gap-1 text-slate-400 text-xs font-medium">
+                                        {comp.placement}
+                                    </span>
+                                )}
+                            </div>
                         </div>
                     </div>
-                </div>
 
-                {/* Mobile/Tablet Content (Visible when screen < xl) */}
-                <div className="block xl:hidden text-slate-400 text-sm leading-relaxed">
-                    {comp.description}
+                    {/* Mobile/Tablet Content (Visible when screen < xl) */}
+                    <div className="block xl:hidden text-slate-400 text-sm leading-relaxed">
+                        {comp.description}
+                    </div>
                 </div>
-            </div>
-        </motion.div>
+            </motion.div>
+        </div>
     );
 };
 
 export default function CaseCompetitions() {
     const containerRef = useRef(null);
     const [activeIndex, setActiveIndex] = useState(0);
+    const itemRefs = useRef<(HTMLDivElement | null)[]>([]);
 
     // Track scroll progress of the entire section
     const { scrollYProgress } = useScroll({
         target: containerRef,
-        offset: ["start start", "end end"]
+        offset: ["start 80px", "end end"]
     });
 
     // Map scroll progress (0 to 1) to active index (0 to length - 1)
@@ -154,16 +156,31 @@ export default function CaseCompetitions() {
     useEffect(() => {
         const unsubscribe = scrollYProgress.on("change", (latest) => {
             const count = competitions.length;
-            const index = Math.min(Math.floor(latest * count), count - 1);
-            setActiveIndex(Math.max(0, index));
+            // Use round instead of floor for better detection during fast scrolling
+            // Adjust the calculation to better distribute scroll ranges
+            const normalized = latest * (count - 1);
+            const index = Math.round(normalized);
+            const clampedIndex = Math.max(0, Math.min(index, count - 1));
+            setActiveIndex(clampedIndex);
         });
         return () => unsubscribe();
     }, [scrollYProgress]);
 
+    // Auto-scroll the active item into view
+    useEffect(() => {
+        if (itemRefs.current[activeIndex]) {
+            itemRefs.current[activeIndex]?.scrollIntoView({
+                behavior: 'smooth',
+                block: 'nearest',
+                inline: 'nearest'
+            });
+        }
+    }, [activeIndex]);
+
     return (
         <section ref={containerRef} className="relative w-full min-h-screen xl:h-[300vh] bg-[#050505] text-white" id="competitions">
 
-            <div className="static xl:sticky top-0 xl:top-28 h-auto xl:h-[calc(100dvh-7rem)] flex flex-col justify-start xl:justify-center overflow-visible pb-12 xl:pb-0 pt-24 xl:pt-8">
+            <div className="static xl:sticky top-0 xl:top-16 h-auto xl:h-[calc(100dvh-4rem)] flex flex-col justify-start xl:justify-center overflow-visible pb-12 xl:pb-0 pt-24 xl:pt-8">
                 <div className="container mx-auto px-4 md:px-12 h-full flex flex-col">
 
                     <div className="flex flex-col xl:flex-row gap-12 xl:gap-24 h-full relative items-center">
@@ -185,10 +202,11 @@ export default function CaseCompetitions() {
                                 </p>
                             </motion.div>
 
-                            <div className="flex flex-col gap-1 pb-24">
+                            <div className="flex flex-col gap-1 pb-4 overflow-auto max-h-[60vh] xl:max-h-none pr-2 [&::-webkit-scrollbar]:w-2 [&::-webkit-scrollbar-track]:bg-transparent [&::-webkit-scrollbar-thumb]:bg-white/10 [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-thumb]:border-2 [&::-webkit-scrollbar-thumb]:border-transparent hover:[&::-webkit-scrollbar-thumb]:bg-purple-500/30">
                                 {competitions.map((comp, index) => (
                                     <CompetitionItem
                                         key={comp.id}
+                                        innerRef={(el) => (itemRefs.current[index] = el)}
                                         comp={comp}
                                         isSelected={index === activeIndex}
                                         onClick={() => {
