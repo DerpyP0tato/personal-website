@@ -71,7 +71,7 @@ export default function RootLayout({
     url: "https://maxwellchan.me",
     jobTitle: "Business-Minded Technologist",
     sameAs: [
-      "https://www.linkedin.com/in/maxwellchan1", // Replace with actual
+      "https://www.linkedin.com/in/maxwellchan1",
     ]
   };
 
