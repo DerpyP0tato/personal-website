@@ -35,7 +35,7 @@ const projects = [
         category: "AUTOMATION",
         description: "Created an automated, Selenium-based data pipeline that connected Amazon marketplace data directly into the company's analytics platform, eliminating manual extraction and reporting workflows.",
         metrics: [
-            { value: "15+ hrs/wk", label: "TIME SAVED" },
+            { value: "20+ hrs/wk", label: "TIME SAVED" },
             { value: "End-to-End", label: "INTEGRATION" }
         ],
         icon: <GitBranch className="w-6 h-6 text-purple-400" />,
