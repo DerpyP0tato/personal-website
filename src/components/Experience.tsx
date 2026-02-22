@@ -9,7 +9,7 @@ const experiences = [
         company: "Maximize Consulting",
         role: "Freelance Consultant",
         period: "Aug 2025 - Present",
-        description: "Serving 3 clients. Reduced data processing time by 96% by building a Python pipeline for Amazon operational data. Led product discovery and MVP development for an AI-powered mentorship platform."
+        description: "Serving 4 clients. Reduced data processing time by 96% by building a Python pipeline for Amazon operational data. Led product discovery and MVP development for an AI-powered mentorship platform."
     },
     {
         company: "Sullivan & Cromwell LLP",
