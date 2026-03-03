@@ -111,7 +111,7 @@ export default function Testimonials() {
                                         {t.name}
                                     </div>
                                     <div className="text-xs text-slate-500 uppercase tracking-wider">
-                                        {t.title} &bull; {t.company}
+                                        {t.company}
                                     </div>
                                 </div>
                             </motion.div>
