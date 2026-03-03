@@ -13,9 +13,9 @@ const experiences = [
     },
     {
         company: "Sullivan & Cromwell LLP",
-        role: "Marketing Technology Intern",
+        role: "Business Development Intern",
         period: "June 2025 - Aug 2025",
-        description: "Replaced a costly enterprise monitoring tool with a custom Python solution. Accelerated analytics workflows by 7x and developed a prioritized SEO improvement strategy."
+        description: "Worked on the marketing technology team. Replaced a costly enterprise monitoring tool with a custom Python solution. Accelerated analytics workflows by 7x and developed a prioritized SEO improvement strategy."
     },
     {
         company: "Diversolar",

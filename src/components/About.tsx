@@ -11,7 +11,6 @@ const techStack = [
     { name: "Google Suite", color: "bg-green-500/20 text-green-400 border-green-500/50" },
     { name: "Python", color: "bg-yellow-500/20 text-yellow-400 border-yellow-500/50" },
     { name: "Google Analytics", color: "bg-orange-500/20 text-orange-400 border-orange-500/50" },
-    { name: "Lovable", color: "bg-pink-500/20 text-pink-400 border-pink-500/50" },
 ];
 
 export default function About() {

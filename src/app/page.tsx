@@ -3,6 +3,7 @@ import About from "@/components/About";
 import Experience from "@/components/Experience";
 import Navbar from "@/components/Navbar";
 import Projects from "@/components/Projects";
+// import Testimonials from "@/components/Testimonials";
 import CaseCompetitions from "@/components/CaseCompetitions";
 import Footer from "@/components/Footer";
 import ScrollToTop from "@/components/ScrollToTop";
@@ -15,6 +16,7 @@ export default function Home() {
             <Navbar />
             <About />
             <Experience />
+            {/* <Testimonials /> */}
             <CaseCompetitions />
             <Projects />
             <Footer />
